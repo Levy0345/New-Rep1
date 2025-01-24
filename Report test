@@ -1,0 +1,7 @@
+from selenium.webdriver.common.by import By
+
+def test_generate_report(driver):
+    # Assume login is handled by a helper
+    driver.get("https://example-admin.com/reports")
+    driver.find_element(By.ID, "generate_report").click()
+    assert "Report Generated" in driver.page_source
