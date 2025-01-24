@@ -1,0 +1,14 @@
+from selenium.webdriver.common.by import By
+
+class UserManagementPage:
+    def __init__(self, driver):
+        self.driver = driver
+
+    def add_user(self, name, email):
+        self.driver.find_element(By.ID, "add_user").click()
+        self.driver.find_element(By.ID, "name").send_keys(name)
+        self.driver.find_element(By.ID, "email").send_keys(email)
+        self.driver.find_element(By.ID, "save_button").click()
+
+    def delete_user(self, user_id):
+        self.driver.find_element(By.ID, f"delete_{user_id}").click()
