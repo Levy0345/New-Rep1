@@ -1,0 +1,15 @@
+from selenium import webdriver
+from pages.login_page import LoginPage
+from pages.user_management_page import UserManagementPage
+from utils.config import BASE_URL, USERNAME, PASSWORD, CHROME_DRIVER_PATH
+
+def test_add_user(driver):
+    # Login first
+    login_page = LoginPage(driver)
+    login_page.load_page(BASE_URL)
+    login_page.login(USERNAME, PASSWORD)
+
+    # Add a user
+    user_management_page = UserManagementPage(driver)
+    user_management_page.add_user("John Doe", "john@example.com")
+    assert "User added successfully" in driver.page_source
